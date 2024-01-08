@@ -1,1 +1,12 @@
-<p>user-profile works!</p>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="user-card">
+    <img alt="Photo of a Shiba Inu" mat-card-image src="./assets/user_avatar.png">
+    <mat-card-content>
+      <p><strong> Username:</strong> {{ user?.name }}</p>
+      <p><strong> Email:</strong> {{ user?.email }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [routerLink]="['/user',user?.id]" color="primary" mat-raised-button>EDIT</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
