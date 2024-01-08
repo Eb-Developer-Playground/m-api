@@ -10,6 +10,10 @@ import {ApiListComponent} from './api-list/api-list.component';
 import {UserUpdateDetailsComponent} from './user/user-profile/user-update-details/user-update-details.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ApiDetailsComponent} from './api-list/api-details/api-details.component';
+import {MaterialModule} from "./material/material.module";
+import {FormlyModule} from '@ngx-formly/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FormlyMaterialModule} from '@ngx-formly/material';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import {ApiDetailsComponent} from './api-list/api-details/api-details.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormlyModule.forRoot(),
+    ReactiveFormsModule,
+    FormlyMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
