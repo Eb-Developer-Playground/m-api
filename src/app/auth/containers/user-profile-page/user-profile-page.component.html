@@ -1,0 +1,24 @@
+<!--<pre>{{ user$ | async  | json }}</pre>-->
+
+<div *ngIf="userAddress$ | async as AddressData" class="employee-profile-container" fxLayout="column"
+     fxLayoutAlign="start center">
+  <equity-bank-card>
+    <equity-bank-card-header fxLayoutAlign="center center">
+      <equity-bank-title> My Profile</equity-bank-title>
+    </equity-bank-card-header>
+    <div class="employee-auth0-profile" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start"
+         fxLayoutAlign.xs="start center ">
+      <equity-bank-card-content>
+        <!--  <app-user-auth0-profile [auth0Profile$]="user$" [address$]="AddressData"></app-user-auth0-profile>-->
+      </equity-bank-card-content>
+
+      <equity-bank-card-content>
+        <div class="employee-address-profile">
+          <!--          <app-user-address [AddressDataValues]=AddressData></app-user-address>-->
+        </div>
+      </equity-bank-card-content>
+
+    </div>
+  </equity-bank-card>
+
+</div>
