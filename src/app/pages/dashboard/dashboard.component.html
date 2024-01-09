@@ -1,0 +1,90 @@
+<equity-bank-page [fxLayoutGap]="gap" class="dashboard" fxLayout="column">
+
+  <!-- FIRST ROW -->
+  <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
+    <div [fxFlex]="col(2)" [fxLayoutGap]="gap" fxLayout="column" fxLayout.gt-sm="row">
+
+      <div [fxFlex.gt-sm]="col(4)" fxFlex="auto">
+        <equity-bank-bar-chart-widget [data]="salesData$ | async"
+                                      [options]="totalSalesOptions"
+                                      class="widget route-animations-elements"></equity-bank-bar-chart-widget>
+      </div>
+
+      <div [fxFlex.gt-sm]="col(4)" fxFlex="auto">
+        <equity-bank-line-chart-widget [data]="visitsData$ | async"
+                                       [options]="totalVisitsOptions"
+                                       class="widget route-animations-elements"></equity-bank-line-chart-widget>
+      </div>
+
+    </div>
+
+    <div [fxFlex]="col(2)" [fxLayoutGap]="gap" fxLayout="column"
+         fxLayout.gt-sm="row">
+
+      <div
+        [fxFlex.gt-sm]="col(4)" fxFlex="auto">
+        <equity-bank-line-chart-widget [data]="clicksData$ | async" [options]="totalClicksOptions"
+                                       class="route-animations-elements"></equity-bank-line-chart-widget>
+      </div>
+
+      <div
+        [fxFlex.gt-sm]="col(4)" fxFlex="auto">
+        <equity-bank-line-chart-widget [data]="conversionsData$ | async"
+                                       [options]="conversionsOptions"
+                                       class="route-animations-elements"></equity-bank-line-chart-widget>
+      </div>
+
+    </div>
+  </div>
+  <!-- END FIRST ROW -->
+
+
+  <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column"
+       fxLayout.gt-lg="row">
+
+    <div [fxFlex]="col(2)" [fxLayoutGap]="gap" fxLayout="column"
+         fxLayout.gt-sm="row">
+
+      <div
+        fxFlex="grow">
+        <equity-bank-audience-overview-widget [options]="audienceOverviewOptions"
+                                              class="route-animations-elements"></equity-bank-audience-overview-widget>
+      </div>
+
+    </div>
+
+    <div [fxFlex]="col(2)" [fxLayoutGap]="gap" fxLayout="column"
+         fxLayout.gt-sm="row">
+
+      <div [fxFlex.gt-sm]="col(2)" [fxLayoutGap]="gap" fxFlex="grow" fxLayout="column">
+        <equity-bank-sales-summary-widget [data]="salesSummaryData$ | async"
+                                          [options]="salesSummaryOptions"
+                                          class="fullheight"></equity-bank-sales-summary-widget>
+
+        <equity-bank-quick-info-widget [background]="'#009688'" class="route-animations-elements" color="white"
+                                       fxFlex="grow"
+                                       icon="people" label="Customers"
+                                       value="234"></equity-bank-quick-info-widget>
+      </div>
+
+
+      <equity-bank-realtime-users-widget [data$]="realtimeUsersData$" [fxFlex.gt-sm]="col(2)"
+                                         [pages$]="realtimeUsersPages$"
+                                         fxFlex="grow"></equity-bank-realtime-users-widget>
+
+    </div>
+  </div>
+
+  <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
+
+    <div [fxFlex]="col(2)" [fxLayoutGap]="gap" fxLayout="column">
+
+      <equity-bank-advanced-pie-chart-widget [data]="advancedPieChartData$ | async" [options]="advancedPieChartOptions"
+                                             class="route-animations-elements"></equity-bank-advanced-pie-chart-widget>
+
+    </div>
+
+  </div>
+</equity-bank-page>
+
+

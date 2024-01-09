@@ -1,0 +1,54 @@
+@use '@angular/material' as mat;
+
+equity-bank-list {
+  @include mat.elevation($elevation);
+  border-radius: $border-radius;
+  overflow: auto;
+  display: flex;
+
+  .equity-bank-list-table {
+    flex: 1 1 auto;
+  }
+
+  .equity-bank-list-header {
+    background: $theme-card;
+    border-bottom: 1px solid $theme-divider;
+
+    .equity-bank-filter-input {
+      background: $theme-card;
+      color: currentColor;
+
+      ::placeholder {
+        color: currentColor;
+      }
+    }
+
+    .equity-bank-filter-input-icon, .equity-bank-column-filter {
+      color: $theme-icon;
+    }
+
+    .equity-bank-list-name {
+      border-right: 1px solid $theme-divider;
+    }
+  }
+
+  .mat-mdc-header-row, .paginator {
+    background: $theme-app-bar;
+  }
+
+  .mat-mdc-row:hover {
+    background: $theme-background-hover;
+  }
+
+  .mat-mdc-cell.actions-cell, .mat-mdc-header-cell.actions-cell {
+    button {
+      color: $theme-icon;
+    }
+  }
+
+  .mat-mdc-cell.image-cell, .mat-mdc-header-cell.image-cell {
+    img {
+      background: $theme-app-bar;
+    }
+  }
+}

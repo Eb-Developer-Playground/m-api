@@ -1,0 +1,11 @@
+<div *ngIf="visible$ | async" class="footer" fxLayout="row">
+  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
+    <div class="name" fxHide fxShow.gt-sm>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button (click)="hide()" mat-icon-button type="button">
+      <mat-icon class="close">close</mat-icon>
+    </button>
+  </div>
+</div>

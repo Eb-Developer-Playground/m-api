@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+.equity-bank-card {
+  background: $theme-card;
+  color: $theme-text;
+
+  @include mat.elevation($elevation);
+
+  .equity-bank-card-header-subheading {
+    color: $theme-secondary-text;
+  }
+
+  .equity-bank-card-actions {
+    border-top: 1px solid $theme-divider;
+  }
+}

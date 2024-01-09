@@ -1,0 +1,49 @@
+<equity-bank-card>
+  <equity-bank-card-header>
+    <equity-bank-card-header-heading>{{ options.title }}</equity-bank-card-header-heading>
+    <equity-bank-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}
+    </equity-bank-card-header-subheading>
+
+    <equity-bank-card-header-actions>
+      <button (click)="reload()" mat-icon-button>
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </equity-bank-card-header-actions>
+  </equity-bank-card-header>
+
+  <equity-bank-card-content class="card-content">
+    <equity-bank-recent-sales-widget-table [columns]="tableOptions?.columns" [data]="tableData"
+                                           [pageSize]="tableOptions?.pageSize"></equity-bank-recent-sales-widget-table>
+
+    <div class="content">
+      <canvas *ngIf="chartData"
+              [datasets]="chartData.datasets"
+              [labels]="chartData.labels"
+              [legend]="false"
+              [options]="chartOptions"
+              baseChart
+              type="line">
+      </canvas>
+    </div>
+  </equity-bank-card-content>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon> settings</mat-icon>
+      <span> Settings </span>
+    </button>
+    <button disabled mat-menu-item>
+      <mat-icon> more</mat-icon>
+      <span> More Info </span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon> remove_circle</mat-icon>
+      <span> Remove Widget </span>
+    </button>
+  </mat-menu>
+
+  <equity-bank-loading-overlay [isLoading]="isLoading"></equity-bank-loading-overlay>
+</equity-bank-card>
