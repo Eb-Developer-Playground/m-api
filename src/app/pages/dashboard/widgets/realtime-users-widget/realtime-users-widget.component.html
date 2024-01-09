@@ -1,0 +1,25 @@
+<equity-bank-card class="realtime-users-widget">
+  <equity-bank-card-header class="header" fxLayout="column">
+    <equity-bank-card-header-heading>Active Users right now</equity-bank-card-header-heading>
+
+    <div class="value">{{ currentUsers }}</div>
+  </equity-bank-card-header>
+
+  <equity-bank-card-content>
+    <div class="section">
+      <div class="heading">Page views per minute</div>
+      <div class="canvas-content">
+        <canvas #canvas></canvas>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="heading">Top Active Pages</div>
+      <equity-bank-scrollbar class="pages">
+        <div *ngFor="let page of pages$ | async" class="page">
+          {{ page.page }}
+        </div>
+      </equity-bank-scrollbar>
+    </div>
+  </equity-bank-card-content>
+</equity-bank-card>
