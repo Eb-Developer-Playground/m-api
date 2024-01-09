@@ -1,0 +1,91 @@
+<!--<equity-bank-loading-indicator></equity-bank-loading-indicator>-->
+<equity-bank-backdrop #backdrop="equityBankBackdrop"></equity-bank-backdrop>
+<equity-bank-config-panel-toggle (openConfig)="openConfigPanel()"></equity-bank-config-panel-toggle>
+
+<!-- QUICKPANEL -->
+<equity-bank-sidebar #configPanel="equityBankSidebar" [backdrop]="backdrop" [invisibleBackdrop]="true"
+                     position="right">
+  <equity-bank-config-panel></equity-bank-config-panel>
+</equity-bank-sidebar>
+<!-- END QUICKPANEL -->
+
+<div class="container" fxLayout="column">
+  <ng-container *ngIf="(toolbarPosition$ | async) === 'above-fixed'">
+    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+  </ng-container>
+
+  <mat-sidenav-container autosize fxFlex>
+
+    <!-- SIDENAV -->
+    <mat-sidenav (closedStart)="closeSidenav()"
+                 (openedStart)="openSidenav()"
+                 *ngIf="sideNavigation$ | async"
+                 [mode]="sidenavMode$ | async"
+                 [opened]="sidenavOpen$ | async"
+                 class="equity-bank-collapsable-sidenav">
+      <equity-bank-sidenav [collapsed]="sidenavCollapsed$ | async"
+                           [expanded]="sidenavExpanded$ | async"></equity-bank-sidenav>
+    </mat-sidenav>
+    <!-- END SIDENAV -->
+
+    <mat-sidenav [(opened)]="quickPanelOpen" mode="over" position="end">
+      <equity-bank-quickpanel></equity-bank-quickpanel>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content-container" fxLayout="column">
+      <ng-container *ngIf="(toolbarPosition$ | async) === 'fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+      </ng-container>
+
+      <!-- CONTENT -->
+      <div [class.scroll-disabled]="scrollDisabled$ | async"
+           cdkScrollable
+           class="content"
+           fxFlex="auto"
+           fxLayout="column">
+        <ng-container *ngIf="(toolbarPosition$ | async) === 'static'">
+          <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+
+        <div class="content-inner" fxFlex="auto">
+          <router-outlet></router-outlet>
+        </div>
+
+        <ng-container *ngIf="(footerPosition$ | async) === 'static'">
+          <ng-container *ngTemplateOutlet="footer"></ng-container>
+        </ng-container>
+      </div>
+      <!-- END CONTENT -->
+
+      <ng-container *ngIf="(footerPosition$ | async) === 'fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+      </ng-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <ng-container *ngIf="(footerPosition$ | async) === 'above-fixed'">
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #toolbar>
+  <!-- TOOLBAR -->
+  <equity-bank-toolbar (openQuickPanel)="openQuickPanel()"
+                       (openSidenav)="openSidenav()"
+                       *ngIf="toolbarVisible$ | async"
+                       [hasNavigation]="topNavigation$ | async"
+                       fxFlex="none"></equity-bank-toolbar>
+  <!-- END TOOLBAR -->
+
+  <!-- NAVIGATION -->
+  <equity-bank-navigation *ngIf="topNavigation$ | async"
+                          fxFlex="none"></equity-bank-navigation>
+  <!-- END NAVIGATION -->
+</ng-template>
+
+<ng-template #footer>
+  <!-- FOOTER -->
+  <equity-bank-footer fxFlex="none"></equity-bank-footer>
+  <!-- END FOOTER -->
+</ng-template>
+

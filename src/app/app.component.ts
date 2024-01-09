@@ -1,5 +1,18 @@
-import { Component } from '@angular/core';
-
+import { Component, Inject, Renderer2 } from '@angular/core';
+import { MediaObserver } from '@angular/flex-layout';
+import { routeAnimations } from 'src/shared/animations/route.animations';
+import { Store } from '@ngrx/store';
+import * as fromAuth from './auth/reducers';
+import { Observable } from 'rxjs';
+import { AuthActions } from './auth/actions';
+import { SidenavService } from './layout/sidenav/sidenav.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { ThemeService } from '../@equity-bank/services/theme.service';
+import { DOCUMENT } from '@angular/common';
+import { Platform } from '@angular/cdk/platform';
+import { ActivatedRoute } from '@angular/router';
+import { SplashScreenService } from '../@equity-bank/services/splash-screen.service';
+import { filter } from 'rxjs/operators';
 
 // TODO:
 
@@ -36,13 +49,66 @@ Allow them to review their billing details
 Review their API utilisation and history
 
  */
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routeAnimations],
 })
 export class AppComponent {
-  title = 'm-api';
+  loggedIn$: Observable<boolean>;
+
+  constructor(
+    public media: MediaObserver,
+    private store: Store,
+    private sidenavService: SidenavService,
+    private iconRegistry: MatIconRegistry,
+    private renderer: Renderer2,
+    private themeService: ThemeService,
+    @Inject(DOCUMENT) private document: Document,
+    private platform: Platform,
+    private route: ActivatedRoute,
+    private splashScreenService: SplashScreenService,
+  ) {
+    this.loggedIn$ = this.store.select(fromAuth.selectLoggedIn);
+
+    this.route.queryParamMap
+      .pipe(filter((queryParamMap) => queryParamMap.has('style')))
+      .subscribe((queryParamMap) =>
+        this.themeService.setStyle(queryParamMap.get('style')),
+      );
+
+    this.themeService.theme$.subscribe((theme) => {
+      if (theme[0]) {
+        this.renderer.removeClass(this.document.body, theme[0]);
+      }
+
+      this.renderer.addClass(this.document.body, theme[1]);
+    });
+
+    if (this.platform.BLINK) {
+      this.renderer.addClass(this.document.body, 'is-blink');
+    }
+
+    this.sidenavService.addItems([
+      {
+        name: 'APIs',
+        position: 5,
+        type: 'subheading',
+        customClass: 'first-subheading',
+      },
+      {
+        name: 'Dashboard',
+        routeOrFunction: '/',
+        icon: 'dashboard',
+        position: 10,
+        pathMatchExact: true,
+      },
+    ]);
+  }
+
+  logout() {
+    this.store.dispatch(AuthActions.logoutConfirmation());
+  }
 }
-
-
