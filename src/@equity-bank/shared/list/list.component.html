@@ -1,0 +1,32 @@
+<div class="equity-bank-list-table">
+  <div *ngIf="!hideHeader"
+       class="equity-bank-list-header"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap="8px"
+       fxLayoutGap.gt-xs="24px">
+    <div class="equity-bank-list-name">{{ name }}</div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon class="equity-bank-filter-input-icon">search</mat-icon>
+      <input #filter class="equity-bank-filter-input" fxFlex placeholder="Search&hellip;">
+    </div>
+
+    <button [matMenuTriggerFor]="columnFilter" class="equity-bank-column-filter" mat-icon-button type="button">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <ng-content select=".actions"></ng-content>
+  </div>
+
+  <mat-menu #columnFilter="matMenu" xPosition="before" yPosition="below">
+    <div (click)="toggleColumnVisibility(column, $event)"
+         *ngFor="let column of columns"
+         class="checkbox-item mat-menu-item">
+      <mat-checkbox #checkbox (click)="$event.stopPropagation()" [(ngModel)]="column.visible" class="checkbox">
+        {{ column.name }}
+      </mat-checkbox>
+    </div>
+  </mat-menu>
+
+  <ng-content></ng-content>
+</div>
