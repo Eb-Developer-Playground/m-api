@@ -23,13 +23,14 @@ export interface ThemeConfig {
   providedIn: 'root',
 })
 export class ThemeService {
-  activeTheme$ = this.theme$.pipe(map((theme) => theme[1]));
   // @ts-ignore
   private _themeSubject = new BehaviorSubject<[Theme, Theme]>([
     null,
     'equity-bank-default',
   ]);
   theme$ = this._themeSubject.asObservable();
+  // @ts-ignore
+  activeTheme$ = this.theme$.pipe(map((theme) => theme[1]));
   private _configSubject = new BehaviorSubject<ThemeConfig>({
     navigation: 'side',
     sidenavUserVisible: true,

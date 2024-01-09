@@ -1,0 +1,33 @@
+<div (equityBankClickOutside)="onClickOutside()" class="toolbar-user" fxFlex="grow">
+  <button (click)="toggleDropdown()" [class.open]="isOpen" class="button" fxFlex="grow" mat-button>
+    <span fxLayout="row" fxLayoutAlign="start center">
+      <img class="avatar" src="assets/user_avatar.png">
+      <span class="name" fxHide fxShow.gt-sm>John Doe</span>
+      <mat-icon class="icon" fxHide fxShow.gt-sm>keyboard_arrow_down</mat-icon>
+    </span>
+  </button>
+
+  <div [class.open]="isOpen" class="dropdown">
+    <div class="content">
+      <div class="list">
+        <div class="list-item" matRipple>
+          <mat-icon class="list-item-icon">account_circle</mat-icon>
+          <span>Profile</span>
+        </div>
+        <div class="list-item" matRipple>
+          <mat-icon class="list-item-icon">settings</mat-icon>
+          <span>Settings</span>
+        </div>
+        <div class="list-item" matRipple>
+          <mat-icon class="list-item-icon">help</mat-icon>
+          <span>Help</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div [routerLink]="['/login']" class="list-item" matRipple>
+          <mat-icon class="list-item-icon">exit_to_app</mat-icon>
+          <span>Logout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
