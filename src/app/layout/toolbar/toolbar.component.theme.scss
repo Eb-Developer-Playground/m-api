@@ -3,6 +3,7 @@
 
 equity-bank-toolbar {
   // position: map-get($toolbar, position); // TODO IMPLEMENT
+  @include mat.elevation(2);
 
   &.no-box-shadow {
     .toolbar {
