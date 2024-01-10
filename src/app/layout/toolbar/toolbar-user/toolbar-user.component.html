@@ -10,11 +10,11 @@
   <div [class.open]="isOpen" class="dropdown">
     <div class="content">
       <div class="list">
-        <div class="list-item" matRipple>
+        <div  [routerLink]="['/user']" class="list-item" matRipple>
           <mat-icon class="list-item-icon">account_circle</mat-icon>
           <span>Profile</span>
         </div>
-        <div class="list-item" matRipple>
+        <div  [routerLink]="['/settings']" class="list-item" matRipple>
           <mat-icon class="list-item-icon">settings</mat-icon>
           <span>Settings</span>
         </div>
