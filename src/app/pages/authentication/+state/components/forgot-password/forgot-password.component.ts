@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { fadeInUpAnimation } from '../../../../shared/animations/fade-in-up.animation';
+import { fadeInUpAnimation } from '../../../../../../shared/animations/fade-in-up.animation';
 
 @Component({
   selector: 'fury-forgot-password',

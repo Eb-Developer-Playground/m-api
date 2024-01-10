@@ -5,26 +5,25 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { fadeInUpAnimation } from '../../../../shared/animations/fade-in-up.animation';
+import { fadeInUpAnimation } from '../../../../../../shared/animations/fade-in-up.animation';
 
 @Component({
   selector: 'fury-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  animations: [fadeInUpAnimation]
+  animations: [fadeInUpAnimation],
 })
 export class RegisterComponent implements OnInit {
-
-  form!: UntypedFormGroup
+  form!: UntypedFormGroup;
 
   inputType = 'password';
   visible = false;
 
-  constructor(private router: Router,
-              private fb: UntypedFormBuilder,
-              private cd: ChangeDetectorRef
-  ) {
-  }
+  constructor(
+    private router: Router,
+    private fb: UntypedFormBuilder,
+    private cd: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     this.form = this.fb.group({

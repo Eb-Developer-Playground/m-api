@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordRoutingModule } from './forgot-password-routing.module';
 import { ForgotPasswordComponent } from './forgot-password.component';
-import { MaterialModule } from '../../../../@equity-bank/shared/material-components.module';
+import { MaterialModule } from '../../../../../../@equity-bank/shared/material-components.module';
 
 @NgModule({
   imports: [
