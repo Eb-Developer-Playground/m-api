@@ -83,7 +83,7 @@ export class AppComponent {
       if (theme[0]) {
         this.renderer.removeClass(this.document.body, theme[0]);
       }
-
+      this.themeService.setFooterVisible(false);
       this.renderer.addClass(this.document.body, theme[1]);
     });
 
@@ -93,8 +93,8 @@ export class AppComponent {
 
     this.sidenavService.addItems([
       {
-        name: 'APIs',
-        position: 5,
+        name: 'Analytics',
+        position: 1,
         type: 'subheading',
         customClass: 'first-subheading',
       },
@@ -102,8 +102,20 @@ export class AppComponent {
         name: 'Dashboard',
         routeOrFunction: '/',
         icon: 'dashboard',
-        position: 10,
+        position: 2,
         pathMatchExact: true,
+      },
+      {
+        name: 'API Market Place',
+        icon: 'storefront',
+        position: 3,
+        type: 'subheading',
+      },
+      {
+        name: 'Market',
+        icon: 'api',
+        routeOrFunction: '/apis',
+        position: 4,
       },
     ]);
   }
