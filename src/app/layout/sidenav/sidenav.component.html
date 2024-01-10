@@ -3,6 +3,19 @@
     <div class="sidenav-toolbar-icon">
 <!--    put logo-->
     </div>
+
+
+
+    <div fxFlexAlign="center" fxHide fxShow.gt-md>
+      <button (click)="toggleCollapsed()" class="sidenav-toolbar-collapse-toggle" mat-icon-button>
+        <mat-icon *ngIf="!collapsed"  class="sidenav-toolbar-collapse-icon">menu</mat-icon>
+        <mat-icon *ngIf="collapsed" class="sidenav-toolbar-collapse-icon">menu_open</mat-icon>
+      </button>
+    </div>
+
+    <span fxFlex><!-- fill space --></span>
+
+
     <div [routerLink]="['/']" class="sidenav-toolbar-logo">
       <svg fill="none" height="48" viewBox="0 0 64 48" width="64" xmlns="http://www.w3.org/2000/svg">
         <path d="M8.03181 33.9655V31.3096H0.0961914V43.2569H8.03181V40.6009H2.79579V38.6192H6.61673V35.9472H2.79579V33.9655H8.03181Z" fill="#221F1F"/>
@@ -13,18 +26,8 @@
         <path d="M60.6567 31.3096L58.0713 34.8646L55.4708 31.3096H52.1499L52.3539 31.5894C52.6904 32.0527 53.0467 32.5389 53.4228 33.0481C53.7989 33.5573 54.1746 34.0699 54.5499 34.586C54.9268 35.1066 55.3033 35.6208 55.6794 36.1284C56.0416 36.6192 56.3862 37.0894 56.7134 37.539V43.2569H59.4165V37.539L63.9997 31.3096H60.6567Z" fill="#221F1F"/>
         <path clip-rule="evenodd" d="M10.5624 10.9963H0.0961914V27.2017L10.5694 27.2177L28.9141 14.5743L46.7657 27.2154H63.9961L28.9083 2.35742L10.5624 14.9963V10.9963Z" fill="#A32A29" fill-rule="evenodd"/>
       </svg>
-
     </div>
 
-
-    <span fxFlex><!-- fill space --></span>
-
-    <div fxFlexAlign="center" fxHide fxShow.gt-md>
-      <button (click)="toggleCollapsed()" class="sidenav-toolbar-collapse-toggle" mat-icon-button>
-        <mat-icon *ngIf="!collapsed" class="sidenav-toolbar-collapse-icon">radio_button_checked</mat-icon>
-        <mat-icon *ngIf="collapsed" class="sidenav-toolbar-collapse-icon">radio_button_unchecked</mat-icon>
-      </button>
-    </div>
   </div>
 
   <equity-bank-scrollbar class="sidenav-items" fxFlex="auto">
