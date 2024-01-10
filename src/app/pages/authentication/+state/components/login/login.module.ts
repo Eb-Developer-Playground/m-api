@@ -3,17 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
-import { MaterialModule } from '../../../../@equity-bank/shared/material-components.module';
+import { MaterialModule } from '../../../../../../@equity-bank/shared/material-components.module';
+import { AuthModule } from '../../index';
+import { AuthRoutingModule } from '../../auth-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    AuthRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AuthModule,
+    LoginRoutingModule,
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent],
 })
-export class LoginModule {
-}
+export class LoginModule {}

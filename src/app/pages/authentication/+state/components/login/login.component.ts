@@ -6,40 +6,43 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { fadeInUpAnimation } from '../../../../shared/animations/fade-in-up.animation';
+import { fadeInUpAnimation } from '../../../../../../shared/animations/fade-in-up.animation';
 
 @Component({
   selector: 'fury-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [fadeInUpAnimation]
+  animations: [fadeInUpAnimation],
 })
 export class LoginComponent implements OnInit {
-
   form?: UntypedFormGroup;
 
   inputType = 'password';
   visible = false;
 
-  constructor(private router: Router,
-              private fb: UntypedFormBuilder,
-              private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
-  ) {
-  }
+  constructor(
+    private router: Router,
+    private fb: UntypedFormBuilder,
+    private cd: ChangeDetectorRef,
+    private snackbar: MatSnackBar,
+  ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
   send() {
     this.router.navigate(['/']);
-    this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'THANKS', {
-      duration: 10000
-    });
+    this.snackbar.open(
+      "Lucky you! Looks like you didn't need a password or email address! For a real application we provide validators to prevent this. ;)",
+      'THANKS',
+      {
+        duration: 10000,
+      },
+    );
   }
 
   toggleVisibility() {
