@@ -3,11 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import { ApiListComponent } from './api-list/api-list.component';
-import { UserUpdateDetailsComponent } from './user/user-profile/user-update-details/user-update-details.component';
-import { ApiDetailsComponent } from './api-list/api-details/api-details.component';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import {
@@ -26,7 +21,6 @@ import { metaReducers, ROOT_REDUCERS } from './+state';
 import { RouterEffects } from './core/effects';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './auth';
 import { EquityBankSharedModule } from '../@equity-bank/equity-bank-shared.module';
 import { EquityBankCardModule } from '../@equity-bank/shared/card/card.module';
 import { NgChartsModule } from 'ng2-charts';
@@ -40,8 +34,12 @@ import {
 } from '@angular/material/snack-bar';
 import { LayoutModule } from './layout/layout.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
+import { ApiListComponent } from './pages/api-list/api-list.component';
+import { UserUpdateDetailsComponent } from './pages/user/user-profile/user-update-details/user-update-details.component';
+import { ApiDetailsComponent } from './pages/api-list/api-details/api-details.component';
 
-const primaryColour = '#673ab7';
+const primaryColour = '#A32A29';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: primaryColour,
@@ -66,25 +64,17 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     UserProfileComponent,
     ApiListComponent,
     UserUpdateDetailsComponent,
-    ApiDetailsComponent
+    ApiDetailsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
     CoreModule,
-    AuthModule,
     AppRoutingModule,
     FontAwesomeModule,
     EquityBankSharedModule,
-    FormlyModule.forRoot(),
     ReactiveFormsModule,
-    FormlyMaterialModule,
-    FormlyModule.forRoot({
-      validationMessages: [
-        {name: 'required', message: 'This field is required'},
-      ],
-    }),
     FormlyMaterialModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderRouterModule.forRoot({
@@ -101,7 +91,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         strictActionTypeUniqueness: true,
       },
     }),
-    EffectsModule.forRoot([RouterEffects,]),
+    EffectsModule.forRoot([RouterEffects]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       name: 'EB-Api-monetization',
@@ -114,20 +104,18 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {
-        appearance: 'fill'
-      } as MatFormFieldDefaultOptions
+        appearance: 'fill',
+      } as MatFormFieldDefaultOptions,
     },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {
         duration: 5000,
-        horizontalPosition: 'end',
-        verticalPosition: 'bottom'
-      } as MatSnackBarConfig
-    }
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      } as MatSnackBarConfig,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
-
+export class AppModule {}
