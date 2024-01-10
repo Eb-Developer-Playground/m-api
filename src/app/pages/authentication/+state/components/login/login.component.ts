@@ -4,9 +4,11 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { fadeInUpAnimation } from '../../../../../../shared/animations/fade-in-up.animation';
+import { Store } from '@ngrx/store';
+import { LoginApiActions } from '../../actions';
 
 @Component({
   selector: 'fury-login',
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private cd: ChangeDetectorRef,
     private snackbar: MatSnackBar,
+    private store: Store,
   ) {}
 
   ngOnInit() {
@@ -35,13 +38,18 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-    this.router.navigate(['/']);
+    const formValues = this.form.value;
+    this.store.dispatch(
+      LoginApiActions.loginUser({
+        user: { email: formValues.email, password: formValues.password },
+      }),
+    );
     this.snackbar.open(
       "Lucky you! Looks like you didn't need a password or email address! For a real application we provide validators to prevent this. ;)",
       'THANKS',
       {
         duration: 10000,
-      },
+      } as MatSnackBarConfig,
     );
   }
 
