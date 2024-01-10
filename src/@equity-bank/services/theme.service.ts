@@ -26,7 +26,7 @@ export class ThemeService {
   // @ts-ignore
   private _themeSubject = new BehaviorSubject<[Theme, Theme]>([
     null,
-    'equity-bank-default',
+    'equity-bank-light',
   ]);
   theme$ = this._themeSubject.asObservable();
   // @ts-ignore
@@ -44,7 +44,7 @@ export class ThemeService {
   // @ts-ignore
 
   constructor(private sidenavService: SidenavService) {
-    this.setTheme('equity-bank-default');
+    this.setTheme('equity-bank-light');
   }
 
   setTheme(theme: Theme) {

@@ -10,9 +10,43 @@ $theme-accent-hue: 500;
 $theme-warn-hue: 500;
 
 @include mat.core();
+/* For use in src/lib/core/theming/_palette.scss */
+$equity-primary: (
+  50 : #f4e5e5,
+  100 : #e3bfbf,
+  200 : #d19594,
+  300 : #bf6a69,
+  400 : #b14a49,
+  500 : #a32a29,
+  600 : #9b2524,
+  700 : #911f1f,
+  800 : #881919,
+  900 : #770f0f,
+  A100 : #ffaaaa,
+  A200 : #ff7777,
+  A400 : #ff4444,
+  A700 : #ff2a2a,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
 
-$theme-primary: mat.define-palette(mat.$blue-palette, $theme-primary-hue);
-$theme-accent: mat.define-palette(mat.$teal-palette, $theme-accent-hue);
+
+$theme-primary: mat.define-palette( $equity-primary, $theme-primary-hue);
+$theme-accent: mat.define-palette($equity-primary, $theme-accent-hue);
 $theme-warn: mat.define-palette(mat.$red-palette, $theme-warn-hue);
 
 
