@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AuthActions } from '../../../pages/authentication/+state/actions';
 
 @Component({
   selector: 'equity-bank-toolbar-user',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ToolbarUserComponent implements OnInit {
   isOpen!: boolean;
 
-  constructor() {}
+  constructor(private store: Store) {}
 
   ngOnInit() {}
 
@@ -18,5 +20,9 @@ export class ToolbarUserComponent implements OnInit {
 
   onClickOutside() {
     this.isOpen = false;
+  }
+
+  logout() {
+    this.store.dispatch(AuthActions.logoutConfirmation());
   }
 }
