@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { ApiDetailsComponent } from './pages/api-list/api-details/api-details.component';
-import { ConfigPanelComponent } from './layout/config-panel/config-panel.component';
-import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
-import { UserUpdateDetailsComponent } from './pages/user/user-profile/user-update-details/user-update-details.component';
-import { ApiListComponent } from './pages/api-list/api-list.component';
-import { authGuard } from './pages/authentication/+state/guard/auth.guard';
+import {NgModule} from '@angular/core';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {LayoutComponent} from './layout/layout.component';
+import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
+import {ApiDetailsComponent} from './pages/api-list/api-details/api-details.component';
+import {ConfigPanelComponent} from './layout/config-panel/config-panel.component';
+import {UserProfileComponent} from './pages/user/user-profile/user-profile.component';
+import {UserUpdateDetailsComponent} from './pages/user/user-profile/user-update-details/user-update-details.component';
+import {ApiListComponent} from './pages/api-list/api-list.component';
+import {AuthGuard} from './pages/authentication/+state/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [authGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
