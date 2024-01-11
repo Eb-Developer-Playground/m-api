@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <equity-bank-card class="user-card">
+    <img alt="Photo of a Shiba Inu" mat-card-image src="./assets/user_avatar.png">
+    <equity-bank-card-content>
+      <p><strong> Username:</strong> {{ user?.name }}</p>
+      <p><strong> Email:</strong> {{ user?.email }}</p>
+    </equity-bank-card-content>
+    <equity-bank-card-actions>
+      <button [routerLink]="['/user',user?.id]" color="primary" mat-raised-button>EDIT</button>
+    </equity-bank-card-actions>
+  </equity-bank-card>
+</div>
